@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BLACKJACK</title>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="scripts.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+    </head>
+
+    
+
+    <body>
+
+        <h1  class="texts" >BLACKJACK</h1>
+
+        
+                
+        <svg id="play" width="500" height="400" style="visibility: hidden;">
+
+            <rect fill="green" x="0" y="0" width="500" height="400" />
+
+            <image id="startCard1" x="25" y="100" width="15%"  href="cards/blue.svg"></image>
+            <image id="startCard2" x="50" y="100" width="15%"  href="cards/blue.svg"></image>
+            <image id="hit1" x="75" y="100" width="15%"  href="cards/blue.svg" style="visibility: hidden;" ></image>
+            <image id="hit2" x="100" y="100" width="15%"  href="cards/blue.svg" style="visibility: hidden;" ></image>
+            <image id="hit3" x="125" y="100" width="15%"  href="cards/blue.svg" style="visibility: hidden;" ></image>
+
+            <image id="startChip5" x="25" y="300" width="8%" onClick="makeBet(5)"  href="chips/poker-chip-5.svg"></image>
+            <image id="startChip10" x="75" y="300" width="8%" onClick="makeBet(10)"  href="chips/poker-chip-10.svg"></image>
+            <image id="startChip15" x="125" y="300" width="8%" onClick="makeBet(15)"  href="chips/poker-chip-15.svg"></image>
+            <image id="startChip50" x="25" y="350" width="8%" onClick="makeBet(50)"  href="chips/poker-chip-50.svg"></image> 
+            <image id="startChip100" x="75" y="350" width="8%" onClick="makeBet(100)"  href="chips/poker-chip-100.svg"></image> 
+            <image id="startChip500" x="125" y="350" width="8%" onClick="makeBet(500)"  href="chips/poker-chip-500.svg"></image>
+
+            <image id="gameChip1" x="25" y="5" class="gc" href="" style="visibility: hidden;"></image>
+            <image id="gameChip2" x="75" y="5" class="gc"  href="" style="visibility: hidden;"></image>
+            <image id="gameChip3" x="125" y="5" class="gc"  href="" style="visibility: hidden;"></image>
+            <image id="gameChip4" x="25" y="35" class="gc"  href="" style="visibility: hidden;"></image> 
+            <image id="gameChip5" x="75" y="35" class="gc"  href="" style="visibility: hidden;"></image> 
+            <image id="gameChip6" x="125" y="35" class="gc"   href="" style="visibility: hidden;"></image>
+
+            <image id="opCard1" x="400" y="100" width="15%"  href="cards/blue.svg"></image>
+            <image id="opCard2" x="375" y="100" width="15%"  href="cards/blue.svg"></image>
+
+            
+            <text  class="texts"  id="message" x="25" y="85"></text>
+            <text  class="texts"  id="bets" x="100" y="85">Bet: </text>
+            <text  class="texts"  id="op" x="375" y="85"> </text>
+            <text  class="texts"  id="dollars" x="250" y="390">Money : 1000</text>
+            <text  class="texts"  id="pBets" x="65" y="285">Place bets</text>
+        </svg>
+
+        <g id="buttons" style="visibility: hidden;">
+        <button class="texts" onclick="deal()" >Deal</button>
+        <button class="texts" onclick="hit()">Hit</button>
+        <button class="texts" onclick="stand()">Stand</button>
+        <button class="texts" onclick="nRound()">nextRound</button>
+        </g>
+        <g id="startT">
+        <h2>In the game of BlackJack you are playing against the dealer. First you place your bets then you are given two cards.
+            Now you have the option to either "hit" or "stand", hit means to be given another card from the deck and stand means 
+            to flip your cards. Your goal is to get the sum of your cards close to 21 without going over. If you go over, you bust which
+            means the dealer wins. When you flip your cards if your cards are higher than the dealers you win  the amount of money
+            that you bet. If the dealer has higher cards and does not bust, you lose your money.
+
+        </h2>
+        <br>
+        <h2>NOW LETS GET HOOKED!</h2>
+        <br>
+        <h2>99% OF GAMBLERS QUIT BEFORE THEY HIT BIG!</h2>
+        <br>
+        <h2>YOU CAN ONLY LOSE 100%, BUT YOU COULD MAKE ∞%</h2>
+        <br>
+        <h2>KEEP GAMBLING, TODAYS YOUR LUCKY DAY I CAN FEEL IT</h2>
+        <br>
+        <h2>(dont tell your wife)</h2>
+        <div>
+        <button onclick="start()"  class="mid">Start Game</button>
+        </div>
+        </g>
+        
+        
+        
+
+        
+
+    </body>
+</html>
