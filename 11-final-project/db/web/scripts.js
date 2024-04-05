@@ -75,10 +75,17 @@ var betNum = 1;
 var totBet = 0;
 var money = 1000;
 
-function start(){
+
+function startRoulette(){
     $("#startT").css("visibility", "hidden");
-    $("#play").css("visibility", "visible");
-    $("#buttons").css("visibility", "visible");
+    $("#playRoulette").css("visibility", "visible");
+    // $("#buttons").css("visibility", "visible");
+}
+
+function startPoker(){
+    $("#startT").css("visibility", "hidden");
+    $("#playPoker").css("visibility", "visible");
+    // $("#buttons").css("visibility", "visible");
 }
 
 function makeBet(bet){
