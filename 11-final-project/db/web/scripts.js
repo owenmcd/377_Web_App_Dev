@@ -82,10 +82,36 @@ function startRoulette(){
     // $("#buttons").css("visibility", "visible");
 }
 
+function redBet(){
+    $("#startChip5").css("visibility", "visible")
+    $("#startChip10").css("visibility", "visible")
+    $("#startChip15").css("visibility", "visible")
+    $("#startChip50").css("visibility", "visible")
+    $("#startChip100").css("visibility", "visible")
+    $("#startChip500").css("visibility", "visible")
+}
+
 function startPoker(){
     $("#startT").css("visibility", "hidden");
     $("#playPoker").css("visibility", "visible");
-    // $("#buttons").css("visibility", "visible");
+    $("#buttons").css("visibility", "visible");
+}
+
+function reveal(){
+    var card1 = Math.floor(Math.random() * 52);
+    $("#gameCard1").attr("href", deck[card1].href);
+    var card2 = Math.floor(Math.random() * 52);
+    $("#gameCard2").attr("href", deck[card2].href);
+    var card3 = Math.floor(Math.random() * 52);
+    $("#gameCard3").attr("href", deck[card3].href);
+    var card4 = Math.floor(Math.random() * 52);
+    $("#gameCard4").attr("href", deck[card4].href);
+
+    var card5 = Math.floor(Math.random() * 52);
+    $("#yCard1").attr("href", deck[card5].href);
+    var card6 = Math.floor(Math.random() * 52);
+    $("#yCard2").attr("href", deck[card6].href);
+    
 }
 
 function makeBet(bet){
@@ -136,6 +162,8 @@ function deal(){
     $("#startChip100").css("visibility", "hidden");
     $("#startChip500").css("visibility", "hidden");
 }
+
+
 
 var hitCount = 0;
 
