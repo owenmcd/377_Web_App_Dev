@@ -41,6 +41,7 @@
             <!-- <image x="0" y="0" href="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA5L3Jhd3BpeGVsX29mZmljZV8xOV9zY2VuZV9vZl8zZF9yZW5kZXJfc2ltcGxlX2dhbWVpbmdfcm9vbV9uZW9uX18yZmJlMzcwYS0yNDY3LTQxOTAtOWE2Yi0xOTNjY2MxYTQ5MjdfMS5qcGc.jpg" alt="alternatetext"> -->
             <rect fill="white" x="0" y="0" width="175" height="600"/>
             <rect id ="red" fill="white" x="900" y="380" width="80" height="30" onClick="redBet()" />
+            <circle fill="white" cx="50" cy="50" r="50" />
 
 
             <text  class="texts"  id="bets" x="100" y="185">Bet: </text>
