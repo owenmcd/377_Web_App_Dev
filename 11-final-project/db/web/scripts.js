@@ -79,7 +79,72 @@ var money = 1000;
 function startRoulette(){
     $("#startT").css("visibility", "hidden");
     $("#playRoulette").css("visibility", "visible");
-    // $("#buttons").css("visibility", "visible");
+    $("#rButtons").css("visibility", "visible");
+}
+
+var degree = 0
+var maxSpin = 0
+var timerId = 0
+
+function spin(){
+    maxSpin =  1000 + Math.random() * 360
+    timerId = setInterval(realSpin, 2);
+    
+}
+
+// var zero = 
+// var one = 
+// var two =
+// var three =
+// var four = 
+// var five =
+// var six =
+// var seven = 
+// var eight =
+// var nine = 
+// var ten =
+// var eleven =
+// var twelve = 
+// var thirteen =
+// var fourteen =
+// var fifteen = 
+// var sixteen =
+// var seventeen =
+// var eighteen =
+// var nineteen =
+// var twenty =
+// var twentyone =
+// var twentytwo =
+// var twentythree =
+// var twentyfour =
+// var twentyfive =
+// var twentysix =
+// var twentyseven =
+// var twentyeight =
+// var twentynine =
+// var thirty =
+// var thirtyone = 
+// var thirtytwo =
+
+// var twentyFive = 1003
+// var two = 1013
+
+var slots = [0, 32, 15, 19, 4, 21, 2, 25, 17, 34, 6, 27, 13, 36, 11, 30, 8, 23, 10, 5, 24, 16, 33, 1, 20, 14, 31,9, 22,18, 29,7,28,12,35,3,26]
+
+function realSpin(){
+    degree += 2
+    $("#wheel").attr("transform", "rotate("+degree+",450,300)");
+
+    if(degree > maxSpin){
+        clearInterval(timerId)
+
+        degree %= 360 // range: 0 - 359
+        degree = 36 - Math.floor(degree/ (360/37)) // range: 0 - 36
+
+        console.log("angle: " + degree + " is slot: " + slots[degree]);
+
+
+    }
 }
 
 function redBet(){
