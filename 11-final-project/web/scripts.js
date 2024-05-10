@@ -77,83 +77,142 @@ var money = 1000;
 
 
 function startRoulette(){
+    betNum = 1
+    $("#gameChip1").css("visibility", "hidden");
+    $("#gameChip2").css("visibility", "hidden");
+    $("#gameChip3").css("visibility", "hidden");
+    $("#gameChip4").css("visibility", "hidden");
+    $("#gameChip5").css("visibility", "hidden");
+    $("#gameChip6").css("visibility", "hidden");
     $("#startT").css("visibility", "hidden");
     $("#playRoulette").css("visibility", "visible");
-    $("#rButtons").css("visibility", "visible");
+    $("#scores").css("visibility", "visible");
+    $("#blackButton").css("visibility", "visible");
+    $("#greenButton").css("visibility", "visible");
+    $("#newBet").css("visibility", "hidden")
+    $("#money").text("Total money: " + money);
+    $("#bets").text("Bet: " + totBet);
+    $("#winLose").text("Click on a color");
 }
 
 var degree = 0
 var maxSpin = 0
 var timerId = 0
+var bet = "something"
 
 function spin(){
     maxSpin =  1000 + Math.random() * 360
     timerId = setInterval(realSpin, 2);
     
+    
 }
 
-// var zero = 
-// var one = 
-// var two =
-// var three =
-// var four = 
-// var five =
-// var six =
-// var seven = 
-// var eight =
-// var nine = 
-// var ten =
-// var eleven =
-// var twelve = 
-// var thirteen =
-// var fourteen =
-// var fifteen = 
-// var sixteen =
-// var seventeen =
-// var eighteen =
-// var nineteen =
-// var twenty =
-// var twentyone =
-// var twentytwo =
-// var twentythree =
-// var twentyfour =
-// var twentyfive =
-// var twentysix =
-// var twentyseven =
-// var twentyeight =
-// var twentynine =
-// var thirty =
-// var thirtyone = 
-// var thirtytwo =
+function checkWin(){
+    console.log("bet: " + bet + ", slot: " + slot);
+    if (bet == "red" && slot % 2 != 0 && slot != 0){
+        money = money + totBet * 2
+        $("#winLose").text("You win! + " + totBet + "$");
+    }else if (bet == "black" && degree % 2 == 0 && slot != 0){
+        money = money + totBet * 2
+        $("#winLose").text("You win! + " + totBet + "$");
+    }else if (bet == "green" && slot == 0){
+        money = money + totBet * 35
+        $("#winLose").text("You win! + " + totBet * 35 + "$");
+    }else{
+        money = money - totBet
+        $("#winLose").text("You lose! - " + totBet + "$");
+    }
+    $("#money").text("Total money: " + money);
+    
+}
 
-// var twentyFive = 1003
-// var two = 1013
 
 var slots = [0, 32, 15, 19, 4, 21, 2, 25, 17, 34, 6, 27, 13, 36, 11, 30, 8, 23, 10, 5, 24, 16, 33, 1, 20, 14, 31,9, 22,18, 29,7,28,12,35,3,26]
+var slot = -1;
 
 function realSpin(){
     degree += 2
     $("#wheel").attr("transform", "rotate("+degree+",450,300)");
+    $("#spintxt").text("");
+
 
     if(degree > maxSpin){
         clearInterval(timerId)
 
-        degree %= 360 // range: 0 - 359
-        degree = 36 - Math.floor(degree/ (360/37)) // range: 0 - 36
+        slot = 36 - Math.floor((degree % 360) / (360/37)) // range: 0 - 36
 
-        console.log("angle: " + degree + " is slot: " + slots[degree]);
+        console.log("angle: " + degree + " is slot: " + slots[slot]);
+
+        checkWin()
+        $("#next").css("visibility", "visible")
+        $("#nextText").css("visibility", "visible")
+
+        $("#spin").css("visibility", "hidden")
+        
+
+        
 
 
     }
 }
 
+function reset(){
+    slot = -1
+    degree = 0
+    totBet = 0
+    bet = ""
+    startRoulette();
+}
+
 function redBet(){
+    
     $("#startChip5").css("visibility", "visible")
     $("#startChip10").css("visibility", "visible")
     $("#startChip15").css("visibility", "visible")
     $("#startChip50").css("visibility", "visible")
     $("#startChip100").css("visibility", "visible")
     $("#startChip500").css("visibility", "visible")
+    $("#spin").css("visibility", "visible")
+    $("#redButton").css("visibility", "hidden")
+    $("#blackButton").css("visibility", "hidden")
+    $("#greenButton").css("visibility", "hidden")
+    $("#winLose").text("Place bets on red");
+    
+    bet = "red";
+}
+
+function blackBet(){
+    
+    $("#startChip5").css("visibility", "visible")
+    $("#startChip10").css("visibility", "visible")
+    $("#startChip15").css("visibility", "visible")
+    $("#startChip50").css("visibility", "visible")
+    $("#startChip100").css("visibility", "visible")
+    $("#startChip500").css("visibility", "visible")
+    $("#spin").css("visibility", "visible")
+    $("#redButton").css("visibility", "hidden")
+    $("#blackButton").css("visibility", "hidden")
+    $("#greenButton").css("visibility", "hidden")
+    $("#winLose").text("Place bets on black");
+
+    bet = "black";
+}
+
+function greenBet(){
+    
+    $("#startChip5").css("visibility", "visible")
+    $("#startChip10").css("visibility", "visible")
+    $("#startChip15").css("visibility", "visible")
+    $("#startChip50").css("visibility", "visible")
+    $("#startChip100").css("visibility", "visible")
+    $("#startChip500").css("visibility", "visible")
+    $("#spin").css("visibility", "visible")
+    $("#redButton").css("visibility", "hidden")
+    $("#blackButton").css("visibility", "hidden")
+    $("#greenButton").css("visibility", "hidden")
+    $("#winLose").text("Place bets on green");
+
+    bet = "green";
 }
 
 function startPoker(){
@@ -180,6 +239,7 @@ function reveal(){
 }
 
 function makeBet(bet){
+
     if(bet == 5){
         $("#gameChip" + betNum).attr("href", chip5.href);
         $("#gameChip" + betNum).css("visibility", "visible");
@@ -199,6 +259,7 @@ function makeBet(bet){
         $("#gameChip" + betNum).attr("href", chip500.href);
         $("#gameChip" + betNum).css("visibility", "visible");
     }
+    $("#spintxt").text("Click wheel to spin");
     betNum ++;
     totBet = totBet + bet;
     $("#bets").text("Bet: " + totBet);
